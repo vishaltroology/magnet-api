@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Magnet</title>
+
+<%- include ('../layout/css') -%>
+
+</head>
+
+<body id="page-top">
+<%- include ('layout/header') -%>
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="video_title">Link Title<span class="mandatorySymbol">*</span></label>
+        <input type="text" class="form-control"  id="link_title" name="link_title" placeholder="Enter link title here">
+      </div>
+       <div class="form-group">
+        <label for="video_url">Link URL<span class="mandatorySymbol">*</span></label>
+        <div class="Icon-inside ">
+        <input type="text" class="form-control"  id="link_url" name="link_url" placeholder="Enter your link">
+         <span><img src="/assets/img/linkicon.png"></span>
+        </div>
+      </div>
+    
+      <button type="submit" class="btn saveBtn">SAVE</button>
+      <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+    </form>
+</div>
+<%- include ('layout/footer') -%>
+<%- include ('../layout/js') -%>
+</body>
+</html>

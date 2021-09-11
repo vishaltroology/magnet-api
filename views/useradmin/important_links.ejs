@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Magnet</title>
+
+	<%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+	<%- include ('layout/header') -%>
+		<div class="container">
+
+			<div class="card service">
+				<div class="itemAlign serviceList">
+					<div class="lDiv w15">
+						<img src="/assets/img/innerLink.png" class="img-fluid rounded-circle">
+					</div>
+					<div class="lDiv w70 padding-all-1">
+						<h5 class="font-15">Link Name 1</h5>
+					</div>
+					<div class="rDiv w15 text-center">
+					  <div class="Ebutton r" id="button-1">
+						<input type="checkbox" class="checkbox">
+						<div class="knobs"></div>
+						<div class="layer"></div>
+					  </div>
+					  <!-- <input type="checkbox" checked data-toggle="toggle" data-style="ios" data-on="Show" data-off="Hide"> -->
+					</div>
+				</div>
+
+				<div class="itemAlign">
+					<div class="lDiv w50 padding-all-1 bTop bRight text-center">
+						<a href="/user/edit_important_links" class="font-14 fw-600"><i class="fa fa-edit"></i> Edit</a>
+					</div>
+					<div class="lDiv w50 padding-all-1 bTop text-center">
+						<a href="#" class="font-14 fw-600 colorLight"><i class="fa fa-trash"></i> Delete</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="card service">
+				<div class="itemAlign serviceList">
+					<div class="lDiv w15">
+						<img src="/assets/img/innerLink.png" class="img-fluid rounded-circle">
+					</div>
+					<div class="lDiv w70 padding-all-1">
+						<h5 class="font-15">Link Name 2</h5>
+					</div>
+					<div class="rDiv w15 text-center">
+					  <div class="Ebutton r" id="button-1">
+						<input type="checkbox" class="checkbox">
+						<div class="knobs"></div>
+						<div class="layer"></div>
+					  </div>
+					  <!-- <input type="checkbox" checked data-toggle="toggle" data-style="ios" data-on="Show" data-off="Hide"> -->
+					</div>
+				</div>
+
+				<div class="itemAlign">
+					<div class="lDiv w50 padding-all-1 bTop bRight text-center">
+						<a href="/user/edit_important_links" class="font-14 fw-600"><i class="fa fa-edit"></i> Edit</a>
+					</div>
+					<div class="lDiv w50 padding-all-1 bTop text-center">
+						<a href="#" class="font-14 fw-600 colorLight"><i class="fa fa-trash"></i> Delete</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-2">
+				<a href="/user/add_important_links" class="addServiceBtn"><i class="fa fa-plus-circle"></i> Add More
+					Links</a>
+			</div>
+
+		</div>
+		<%- include ('layout/footer') -%>
+			<%- include ('../layout/js') -%>
+</body>
+
+</html>

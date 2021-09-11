@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Magnet</title>
+
+<%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+<%- include ('layout/header') -%>
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="customer_name">Customer Name<span class="mandatorySymbol">*</span></label>
+        <input type="text" class="form-control"  id="customer_name" name="customer_name" placeholder="Enter Customer Name">
+      </div>
+    <div class="form-group">
+        <label for="company_name">Description<span class="mandatorySymbol">*</span></label>
+        <textarea name="editor1" placeholder="" required></textarea>
+        <!-- <textarea name="editor1" placeholder="" required><p>Enter Client words for you</p></textarea> -->
+      </div>  
+      <button type="submit" class="btn saveBtn">SAVE</button>
+      <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+    </form>
+</div>
+<%- include ('layout/footer') -%>
+<%- include ('../layout/js') -%>
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+ <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+   <script>
+             var editor= CKEDITOR.replace( 'editor1' );
+           
+             CKFinder.setupCKEditor(editor);
+      </script>
+</body>
+</html>

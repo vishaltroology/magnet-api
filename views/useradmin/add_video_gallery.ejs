@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Magnet</title>
+
+  <%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+  <%- include ('layout/header') -%>
+    <div class="container">
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="video_title">Video Title<span class="mandatorySymbol">*</span></label>
+          <input type="text" class="form-control" id="video_title" name="video_title"
+            placeholder="Enter your Video Title here">
+        </div>
+        <div class="form-group">
+          <label for="video_url">Video URL<span class="mandatorySymbol">*</span></label>
+          <input type="text" class="form-control" id="video_url" name="video_url" placeholder="Paste URL here">
+        </div>
+
+        <div class="previewphotoUpload mt-3" id="cover_frame">
+          <div class="form-group cover_photo">
+            <p class="font-10">Preview URL Link Image <br>After Past Video URL in URL Area</p>
+            <input type="file" class="form-control" style="visibility:hidden;" onchange="readURL(this);" id="cover_photo" name="cover_photo">
+          </div>
+        </div>
+
+
+        <!-- <div class="card service gallerySec">
+          <div class="itemAlign">
+            <p>Preview URL Link Image After Past Video URL in URL Area</p>
+          </div>
+        </div> -->
+
+        <button type="submit" class="btn saveBtn">SAVE</button>
+        <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+      </form>
+    </div>
+    <%- include ('layout/footer') -%>
+      <%- include ('../layout/js') -%>
+</body>
+
+</html>

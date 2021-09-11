@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Magnet</title>
+
+  <%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+  <%- include ('layout/header') -%>
+    <div class="container">
+      <form action="/user/save_personal_detail" method="post" enctype="multipart/form-data">
+        <div class="photoUpload" id="cover_frame">
+          <div class="form-group cover_photo">
+            <label class="uploadCover" for="cover_photo"><i class="fa fa-camera"></i> Upload Cover</label>
+            <p class="font-10">640X360 recommended resolution of the Cover Image</p>
+            <input type="file" class="form-control" style="visibility:hidden;" onchange="readURL(this);"
+              id="cover_photo" name="cover_photo">
+          </div>
+        </div>
+
+        <div class="mt-3">
+            <div class="lDiv w30">
+              <div class="photoUpload">
+                <div class="itemAlign" id="profile_frame" style="background-image:url('<%= data.user_image%>')">
+                  <div class="lDiv w70">
+                    <div class="form-group">
+                      <label class="cover_photo" for="profile_pic">Edit Profile Photo</label>
+                      <input type="file" class="form-control" style="visibility:hidden;" onchange="readProfile(this);"
+                        id="profile_pic" name="profile_pic">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rDiv w-70">
+              <div class="col-md-12 ">
+                <div class="form-group">
+                  <label for="first_name">First Name:</label>
+                  <input type="text" class="form-control" value="<%= data.first_name%>" id="first_name"
+                    name="first_name">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="last_name">Last Name:</label>
+                  <input type="text" class="form-control" id="last_name" value="<%= data.last_name%>" name="last_name">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <input type="text" class="form-control" id="designation" name="designation"
+            placeholder="Enter your Designation">
+        </div>
+        <div class="form-group">
+          <label for="company_name">Company Name:</label>
+          <input type="text" class="form-control" id="company_name" name="company_name"
+            placeholder="Enter Company Name">
+        </div>
+
+        <label for="company_logo">Company Logo:</label>
+        <div class="photoUpload" id="company_frame">
+          <div class="form-group cover_photo">
+            <label class="uploadCover" for="company_logo"><i class="fa fa-camera"></i> Upload Company Logo</label>
+            <input type="file" class="form-control" style="visibility:hidden;" onchange="readCompanyLogo(this);"
+              id="company_logo" name="company_logo">
+          </div>
+        </div>
+        <button type="submit" class="btn saveBtn">Submit</button>
+        <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+      </form>
+    </div>
+    <%- include ('layout/footer') -%>
+      <%- include ('../layout/js') -%>
+        <script type="text/javascript">
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#cover_frame')
+                  .css("background-image", "url(" + e.target.result + ")")
+                  .css("background-size", "cover")
+                  .css("background-repeat", "no-repeat")
+                  .css("background-position", "center");
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+
+          function readProfile(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#profile_frame')
+                  .css("background-image", "url(" + e.target.result + ")")
+                  .css("background-size", "cover")
+                  .css("background-repeat", "no-repeat")
+                  .css("background-position", "center");
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+
+          function readCompanyLogo(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#company_frame')
+                  .css("background-image", "url(" + e.target.result + ")")
+                  .css("background-size", "cover")
+                  .css("background-repeat", "no-repeat")
+                  .css("background-position", "center");
+              };
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script>
+</body>
+
+</html>

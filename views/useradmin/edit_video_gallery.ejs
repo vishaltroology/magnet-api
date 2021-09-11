@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Magnet</title>
+
+  <%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+  <%- include ('layout/header') -%>
+    <div class="container">
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="video_title">Video Title<span class="mandatorySymbol">*</span></label>
+          <input type="text" class="form-control" id="video_title" name="video_title"
+            value="need title for better visibility" placeholder="Enter your Video Title Here">
+        </div>
+        <div class="form-group">
+          <label for="video_url">Video URL<span class="mandatorySymbol">*</span></label>
+          <input type="text" class="form-control" id="video_url" name="video_url"
+            placeholder="Paste your Video URL here">
+        </div>
+        <div class="card service gallerySec mt-3">
+          <div class="itemAlign">
+            <iframe width="100%" height="250" src="https://www.youtube.com/embed/heWwHDVUif0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+        <button type="submit" class="btn saveBtn">SAVE</button>
+        <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+      </form>
+    </div>
+    <%- include ('layout/footer') -%>
+      <%- include ('../layout/js') -%>
+        <!-- <script type="text/javascript">
+          $(function () {
+            $('#img_close').click(function () {
+              $('.test').remove();
+            });
+          });
+        </script> -->
+</body>
+
+</html>

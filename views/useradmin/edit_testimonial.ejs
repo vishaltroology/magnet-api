@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Magnet</title>
+
+<%- include ('../layout/css') -%>
+</head>
+
+<body id="page-top">
+<%- include ('layout/header') -%>
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="customer_name">Customer Name<span class="mandatorySymbol">*</span></label>
+        <input type="text" class="form-control"  id="customer_name" name="customer_name" value="Suresh Kumar">
+      </div>
+    <div class="form-group">
+        <label for="company_name">Description<span class="mandatorySymbol">*</span></label>
+        <textarea name="editor1" required>  <p><b>We are a team of professional Insurance and Financial Advisor who are here to cater to your needs and advice related to Life/Health Insurance plans and Mutrual Fund Investments. </b></p> <p><b>We have been offering Insurance and Financial advice to our customers for last 13 years.Our expertise ranges from individual & family insurances to a broad range of business insurance,financial products(Mutual Funds) and advice.</b></p>
+          <p><b>We have a proven track record in managing risk and building certainty.We also provide support to people who wish to make a career in Insurance and Financial Sector.</b></p>
+          <p><b>Our Achievements :-</b></p>
+          <p><b>3 times MDRT(USA),2016,2012017,2019</b></p>
+          <p><b>Corporate club Member - Past 5 year</b></p>
+          <p><b>Experience :-</b></p>
+          <p><b>More than 20 yrs in Financial Services Industry</b></p>
+           <p><b>Assets Under Management:-</b></p>
+          <p><b>80 Cr</b></p>
+          <p><b>Risk Under Management :-</b></p>
+          <p><b>250 Cr , 300 Lives</b></p>
+          <p><b>No of Family being Served :-</b></p>
+          <p><b>20 UHNI</b></p>
+          <p><b>50 HNI</b></p></textarea>
+      </div>  
+      <button type="submit" class="btn saveBtn">SAVE</button>
+      <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+    </form>
+</div>
+<%- include ('layout/footer') -%>
+<%- include ('../layout/js') -%>
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+ <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+   <script>
+             var editor= CKEDITOR.replace( 'editor1' );
+           
+             CKFinder.setupCKEditor(editor);
+      </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Magnet</title>
+
+  <%- include ('../layout/css') -%>
+    <style type="text/css">
+      input[type=text] {
+        width: 100%;
+        padding: .8rem;
+        /* margin:4px; */
+        box-sizing: border-box;
+        padding-left: 3rem;
+      }
+
+      .Icon-inside {
+        position: relative;
+      }
+
+      .Icon-inside img {
+        position: absolute;
+        left: 0rem;
+        top: .01rem;
+        padding: 10px 10px;
+        color: #30A3F1;
+      }
+      .Icon-inside .fa{
+        color: #2fff49;
+      padding-right: .5rem;
+      padding-top: .5rem;
+      }
+    </style>
+</head>
+
+<body id="page-top">
+  <%- include ('layout/header') -%>
+    <div class="container">
+      <form action="/user/save_social_media_links" method="post">
+        <div class="form-group">
+          <label for="facebook">Facebook<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/facebook.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="facebook" name="facebook"
+              placeholder="www.facebook.com/manishrockstar">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="instagram">Instagram<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/instagram.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="instagram" name="instagarm"
+              placeholder="https://www.instagram.com/">
+              <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="twitter">Twitter<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/twitter.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="twitter" name="twitter" placeholder="https://twitter.com/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="youtube">Youtube<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/youtube.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="youtube" name="youtube" placeholder="https://www.youtube.com/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="linkedln">Linkedln<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/linkedin.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="linkedln" name="linkedln"
+              placeholder="https://in.linkedin.com/">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pintrest">Pintrest<span class="mandatorySymbol">*</span></label>
+          <div class="Icon-inside ">
+            <img src="/assets/img/pinterest.png" aria-hidden="true" height="50" width="50">
+            <input type="text" class="form-control" id="pintrest" name="pintrest"
+              placeholder="https://in.pinterest.com/">
+          </div>
+        </div>
+        <button type="submit" class="btn saveBtn">SAVE</button>
+        <button type="reset" class="btn resetBtn"><i class="fa fa-undo" aria-hidden="true"></i> Reset</button>
+      </form>
+    </div>
+    <%- include ('layout/footer') -%>
+      <%- include ('../layout/js') -%>
+</body>
+
+</html>

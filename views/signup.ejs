@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="google-signin-client_id" content="977553366256-9qk83oo71cb1lqcfpe1mcjua6b07me3d.apps.googleusercontent.com">
+<title>Magnet</title>
+<%- include ('layout/css') -%>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body id="page-top">
+<div class="container boxBglight">
+  <div class="row gmailScr">
+    <div  class="col-md-12 col-sm-12 col-xs-12">
+      <div class="card centered text-center" style="width: 20rem;">
+        <div class="card-body">
+          <div class="mb-4"><img src="/assets/img/google.png"></div>
+          
+          <h4><a class="g-signin2"  data-onsuccess="onSignIn">Sign in with Google</a></h4>
+          <!-- <h4><a href="/login">Sign in with Google</a></h4> -->
+          <p class="needHelp mt-4"><a href="/show">Need Help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include ('layout/js') -%>
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log(profile);
+      // Do not send to your backend! Use an ID token instead.
+        console.log('First Name: ' + profile.getGivenName());
+        console.log('Last Name: ' + profile.getFamilyName());
+         console.log('Name: ' + profile.getName());
+         
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        var id_token = googleUser.getAuthResponse().id_token;
+  
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/login');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            console.log('Signed in as: ' + xhr.responseText);
+            if(xhr.responseText == 'success'){
+            
+                location.assign('/login')
+            }
+        };
+        xhr.send(JSON.stringify({token : id_token}));
+      }
+    </script>
+</body>
+</html>

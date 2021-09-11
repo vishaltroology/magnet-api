@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Magnet</title>
+
+  <%- include ('layout/css') -%>
+    <link href="/assets/css/flag.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+  <div class="container boxBglight">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="card text-center">
+          <div>
+            <img class="userCircleImg" src="<%= data.user_image %>">
+            <h5 style="margin-top: -5%;"><span class="userEmail">
+                <%= data.user_email %>
+              </span></h5>
+          </div>
+          <div class="gmailDetail mt-3">
+            <form action="/loginpanel" method="post" id="loginform" onsubmit="return validation()">
+              <div class="form-row align-items-center">
+                <div class="col-md-12">
+                  <!-- <label class="sr-only" for="inlineFormInputGroup">First Name</label> -->
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <p><i class="fa fa-user"></i></p>
+                        <p>First Name</p>
+                      </div>
+                    </div>
+                    <input type="hidden" value="<%= data.user_image %>" name="user_image">
+                    <input type="hidden" value="<%= data.user_email %>" name="user_email">
+                    <input type="text" value="<%= data.first_name %>" name="first_name" id="first_name"
+                      class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                  </div>
+                  <span id="first_name_error"></span>
+                </div>
+                <div class="col-md-12">
+                  <!-- <label class="sr-only" for="inlineFormInputGroup">Last Name</label> -->
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <p><i class="fa fa-user"></i></p>
+                        <p>Last Name</p>
+                      </div>
+                    </div>
+                    <input type="text" value="<%= data.last_name %>" name="last_name" id="last_name"
+                      class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                  </div>
+                  <span id="last_name_error"></span>
+                </div>
+                <div class="col-md-12">
+                  <div class="input-group mb-2">
+                    <input id="phone" type="tel" class="form-control" name="contact_no" id="contact_no"
+                      placeholder="Enter your mobile number" pattern="[6789][0-9]{9}" required>
+                  </div>
+                  <span id="contact_no_error"></span>
+                </div>
+                <div class="col-md-12">
+                  <!-- <label class="sr-only" for="inlineFormInputGroup">Industry</label> -->
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-genderless"></i></div>
+                    </div>
+                    <select name="industry_name" id="industry_name" class="form-control">
+                      <option selected>Selct Gender</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <span id="industry_name_error"></span>
+                </div>
+                <div class="col-md-12">
+                  <!-- <label class="sr-only" for="inlineFormInputGroup">Industry</label> -->
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-industry"></i></div>
+                    </div>
+                    <select name="industry_name" id="industry_name" class="form-control">
+                      <option selected>Selct Industry</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <span id="industry_name_error"></span>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <button type="submit" class="btn btn-block mb-2 borderBtn">Let's create your magnet <i
+                      class="fa fa-arrow-right"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include ('layout/js') -%>
+    <script>
+
+      var telInput = $("#phone")
+      // initialise plugin
+      telInput.intlTelInput({
+
+        allowExtensions: true,
+        formatOnDisplay: true,
+        autoFormat: true,
+        autoHideDialCode: true,
+        autoPlaceholder: true,
+        defaultCountry: "auto",
+        ipinfoToken: "yolo",
+
+        nationalMode: false,
+        numberType: "MOBILE",
+        //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+        preferredCountries: ['in'],
+        preventInvalidNumbers: true,
+        separateDialCode: true,
+        initialCountry: "in",
+        geoIpLookup: function (callback) {
+          $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            callback(countryCode);
+          });
+        },
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
+      });
+
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#phone').blur(function () {
+          var dialcode = $('#phone').parent().find(".flag-container .selected-flag .selected-dial-code ").text();
+          $('#loginform').append('<input type="hidden" name="countryCode" value="' + dialcode + '">');
+        })
+      });
+
+      function validation() {
+        var first_name = $("#first_name").val();
+        var last_name = $("#last_name").val();
+        var contact_no = $("#contact_no").val();
+        var industry_name = $("#industry_name").val();
+
+        var checkfirst_name = /^[A-Za-z. ]{2,15}$/;
+        var checklast_name = /^[A-Za-z. ]{2,15}$/;
+        // var checkcontact_no=/^[6789][0-9]{9}$/;
+
+        if (checkfirst_name.test(first_name)) {
+          $("#first_name_error").html("")
+        }
+        else {
+          $("#first_name_error").html("<p class='text-danger'>**Invalid Name Format<p>");
+          return false;
+        }
+
+        if (checklast_name.test(last_name)) {
+          $("#last_name_error").html("")
+        }
+        else {
+          $("#last_name_error").html("<p class='text-danger'>**Invalid Name Format<p>");
+          return false;
+        }
+
+        //   if(checkcontact_no.test(contact_no))
+        // {
+        //   $("#contact_no_error").html("")
+        // }
+        // else
+        // {
+        //   $("#contact_no_error").html("<p class='text-danger'>**Invalid Mobile Number<p>");
+        //   return false;
+        // }
+
+
+      }
+
+    </script>
+
+    <script>
+      function myFunction() {
+        location.href = 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000/logout';
+      }
+    </script>
+</body>
+
+</html>
